@@ -68,7 +68,7 @@ You'll need to write this array for the solver to solve your cube, here is how t
   [3,0,5,5,0,5,0,4,0,3,2,4,1,3,4,3,1,0,0,3,4,1,4,5,3,0,5,1,0,1,2,1,3,1,1,4,2,4,4,2,2,5,1,4,2,2,2,5,3,5,3,2,0,5]
 
   ```
-  - You can now copy/paste it when the program is asking you for your representation.
+  - You can now copy/paste it when the program is asking for your representation.
   - The program should print you the solution.
   - #### Remember, you should apply the solution given with the blue face in front and yellow face up!
   
@@ -137,3 +137,27 @@ Vous allez avoir besoin de ce tableau pour que le programme puisse résoudre vot
   - Le programme vous donnne alors la résolution.
   - #### Attention, vous devez appliquer les mouvements de résolution avec la face bleue devant et la face jaune au-dessus.
 
+**Les explications en français sont en-dessous.**
+
+## How does our algorithm work ?
+
+Our first idea was to solve the cube as it's done in blind speedcubing because we wouldn't have to code movemements to change the representation of the cube in the code. We only needed a representation of the scrambled cube and we could solve it. We coded this with the basic Pochmann method but it was very slow (~ 300 moves to solve the cube), so we started searching for faster blind methods. We learned about the [Beyer-Hardwick method](https://www.speedsolving.com/wiki/index.php/Beyer-Hardwick_Method) for solving the edges. It was really fast, so we decided to use it. Then Lucas had the brilliant idea that we have an advantage over blind speedsolvers: we can modify the representation of the cube in our 'head'(program). So we needed the fastest way to solve corners, he then had another brilliant idea, solving the corner of a 3x3x3 cube is like solving a 2x2x2 cube! So we choosed to use the [Ortega method](https://www.speedsolving.com/wiki/index.php/Ortega_Method) to solve corners. That's the main idea of our algorithm, here is some more in depth explanation.
+
+### First part : solving corners
+
+As we explained, we solve corners using the Ortega method. The principle is to get all white corners on the white face, all yellow corners on the yellow face then, you only have 5 cases to solve corners.
+
+- We choosed to place white corners first.
+- We first check if there is any corners already well placed.
+- Then, while all white corners are not well placed:
+  - We check if the Yellow-Green-Orange corner has white.
+  - If it's the case, we look where there is place to put the corner on the white face.
+  - We do the coresponding move to place the corner on the white face with the white sticker of the corner facing the wite face.
+  - If it's not the case, we check another corner until we find one and repeat previous steps.
+- When all white corners are on the white face, all yellow corners now are on the yellow face.
+- We now need to align corners(make yellow sticker of the corner facing the yellow face of the cube)
+- The Orthega method gives us method to do this (it's like [OLL](https://www.speedsolving.com/wiki/index.php/OLL) but without placing edges so the algorithm are shorter). So we detect the case by looking at where are placed yellow stickers of corners and apply the corresponding algorithm.
+- We then look at colors of corners to know in which case of the Orthega method we are.
+- We apply the corresponding algorithm.
+
+Corners are now solved!
