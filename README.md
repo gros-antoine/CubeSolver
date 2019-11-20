@@ -76,7 +76,7 @@ You'll need to write this array for the solver to solve your cube, here is how t
 
 Pour l'utiliser, lancez useSolver.py, il vous sera demandé une représentation de votre cube, voilà comment le systeme marche :
 
-Un Rubik's Cube est représenté dans notre code par un tableau une dimension 1 comportant 54 entiers de cette façon (c'est seulement un exemple !) :
+Un Rubik's Cube est représenté dans notre code par un tableau de dimension 1 comportant 54 entiers de cette façon (c'est seulement un exemple !) :
 ```
 
 [3,0,5,5,0,5,0,4,0,3,2,4,1,3,4,3,1,0,0,3,4,1,4,5,3,0,5,1,0,1,2,1,3,1,1,4,2,4,4,2,2,5,1,4,2,2,2,5,3,5,3,2,0,5]
