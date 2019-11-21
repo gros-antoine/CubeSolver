@@ -143,7 +143,7 @@ Vous allez avoir besoin de ce tableau pour que le programme puisse résoudre vot
 
 Our first idea was to solve the cube as it's done in blind speedcubing because we wouldn't have to code movements to change the representation of the cube in the code. We only needed a representation of the scrambled cube and we could solve it. We coded this with the basic Pochmann method but it was very slow (~ 300 moves to solve the cube), so we started searching for faster blind methods. We learned about the [Beyer-Hardwick method](https://www.speedsolving.com/wiki/index.php/Beyer-Hardwick_Method) to solve the edges. It was really fast, so we decided to use it. Then Lucas had the brilliant idea that we have an advantage over blind speedsolvers: we can modify the representation of the cube in our 'head'(program). So we needed the fastest way to solve corners, he then had another brilliant idea, solving the corner of a 3x3x3 cube is like solving a 2x2x2 cube! So we choosed to use the [Ortega method](https://www.speedsolving.com/wiki/index.php/Ortega_Method) to solve corners. That's the main idea of our algorithm, here is some more in depth explanation.
 
-### First part : solving corners
+### First part: solving corners
 
 As we explained, we solve corners using the Ortega method. The principle is to get all white corners on the white face, all yellow corners on the yellow face then, you only have 5 cases to solve corners.
 
@@ -162,3 +162,13 @@ As we explained, we solve corners using the Ortega method. The principle is to g
 - We apply the corresponding algorithm.
 
 Corners are now solved!
+
+### Second part: solving edges
+
+As we eplained previously, we use the Beyer-Hardwick method to solve edges. The principle is to use an edge as a buffer, look where this edge need to go then look at the edge at this location and look where this edge need to go. Every combination of edges is listed in this method, so we apply corresponding moves, it will place the edge previously in the buffer place in her good position, place the edge previously there in her good position and the edge previously there go in the buffer place. We continue this process until the cube is solved.
+
+- We first look if there is any already well placed edge.
+- We then look if there is any inverted edge (edge in their position but reverted), we will solve them at the end.
+- We look at the edge in the buffer place (we chose the BLUE-RED one).
+- We then look where this edge need to go.
+  - If 
