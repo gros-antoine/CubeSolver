@@ -170,5 +170,10 @@ As we eplained previously, we use the Beyer-Hardwick method to solve edges. The 
 - We first look if there is any already well placed edge.
 - We then look if there is any inverted edge (edge in their position but reverted), we will solve them at the end.
 - We look at the edge in the buffer place (we chose the BLUE-RED one).
-- We then look where this edge need to go.
-  - If 
+  - If the edge is the buffer itself, we look for the first two free place and we do the corresponding algorithm to get a new edge.
+  - If not, this is a normal case so we look where this edge need to go:
+    - If the edge is the buffer (BLUE-RED edge), we find a free place for this edge and we apply the algortihm that will send the first edge to her place, send the buffer to the free place and send the edge in the free place to the buffer place.
+    - If the edge is not the buffer, this is a normal case and we look where this edge need to go and we apply the corresponding algortihm.
+- We repeat this until all edges are in their correct place.
+- We will now treat the problem of inverted edges, if there was one inverted edge at the start of the solve, the buffer is neccessarily inverted at the end. If there was more than one edge inverted at the start, it depends on the case.
+- The goal is to bring edge on the top face and apply algorithm that invert edges()
