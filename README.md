@@ -218,4 +218,6 @@ Scramble (blue face front, yellow face up): B R' D' R U2 L2 B2 D B2 L2 D2 F R F2
 Solve (without pre-solve moves):
 Solve (with pre-solve moves): L'B' R2U'L' F UFUF' D' URL'B2R'LU R'LF'RF'BU'FUFB'L' R2FB'D2F'B (the solve is pretty insane though!)
 ```
+You can see that the first two moves ' L'B' ' are ***VERY*** interesting and divide the lenght of the solve by two.
+
 #### That's it for out algorithm!
