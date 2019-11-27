@@ -208,12 +208,13 @@ R'" : ["L", "L'", "L2", "F", "F'", "F2", "D", "D'", "D2", "U", "U'", "U2", "B", 
            "D'" : ["R", "R'", "R2", "L", "L'", "L2", "F", "F'", "F2", "B", "B'", "B2", " "],
            "D2" : ["R", "R'", "R2", "L", "L'", "L2", "F", "F'", "F2", "B", "B'", "B2", " "
 ```
-We keep the shortest algorithm considering that a '2 move (R2, F2 ...) as 2 moves.
+We keep the shortest algorithm counting a '2 move (R2, F2 ...) as 2 moves.
 Doing this can be very interesting and bring solves of 60 moves in average.
 
 For example, we let our program run for hours searching for the fastest solution it could find, here it is:
 ```
 Scramble (blue face front, yellow face up): B R' D' R U2 L2 B2 D B2 L2 D2 F R F2 D' B2 L2 B D F2 L2 B2 R' B' D2
 Solve (without pre-solve moves):
-Solve (with pre-solve moves): L'B' R2U'L' F UFUF'   D' URL'B2R'LU R'LF'RF'BU'FUFB'L' R2FB'D2F'B (the solve is pretty insane though!)
+Solve (with pre-solve moves): L'B' R2U'L' F UFUF' D' URL'B2R'LU R'LF'RF'BU'FUFB'L' R2FB'D2F'B (the solve is pretty insane though!)
 ```
+#### That's it for out algorithm.
