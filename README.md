@@ -141,7 +141,7 @@ Vous allez avoir besoin de ce tableau pour que le programme puisse résoudre vot
 
 ## How does our algorithm work ?
 
-Our first idea was to solve the cube as it's done in blind speedcubing because we wouldn't have to code movements to change the representation of the cube in the code. We only needed a representation of the scrambled cube and we could solve it. We coded this with the basic Pochmann method but it was very slow (~ 300 moves to solve the cube), so we started searching for faster blind methods. We learned about the [Beyer-Hardwick method](https://www.speedsolving.com/wiki/index.php/Beyer-Hardwick_Method) to solve the edges. It was really fast, so we decided to use it. Then Lucas had the brilliant idea that we have an advantage over blind speedsolvers: we can modify the representation of the cube in our 'head'(program). So we needed the fastest way to solve corners, he then had another brilliant idea, solving the corner of a 3x3x3 cube is like solving a 2x2x2 cube! So we choosed to use the [Ortega method](https://www.speedsolving.com/wiki/index.php/Ortega_Method) to solve corners. That's the main idea of our algorithm, here is some more in depth explanation.
+Our first idea was to solve the cube as it's done in blind speedcubing because we wouldn't have to code movements to change the representation of the cube in the code. We only needed a representation of the scrambled cube and we could solve it. We coded this with the basic Pochmann method but it was very slow (~ 300 moves to solve the cube), so we started searching for faster blind methods. We learned about the [Beyer-Hardwick method](https://www.speedsolving.com/wiki/index.php/Beyer-Hardwick_Method) to solve the edges. It was really fast, so we decided to use it. Then Lucas had the brilliant idea that we have an advantage over blind speedsolvers: we can modify the representation of the cube in our 'head'(program). So we needed the fastest way to solve corners, he then had another brilliant idea, solving corners of a 3x3x3 cube is like solving a 2x2x2 cube! So we choosed to use the [Ortega method](https://www.speedsolving.com/wiki/index.php/Ortega_Method) to solve corners. That's the main idea of our algorithm, here is some more in depth explanation.
 
 ### First part: solving corners
 
@@ -218,8 +218,31 @@ For example, we let our program run for hours searching for the fastest solution
 ```
 Scramble (blue face front, yellow face up): B R' D' R U2 L2 B2 D B2 L2 D2 F R F2 D' B2 L2 B D F2 L2 B2 R' B' D2
 Solve (without pre-solve moves): R2UF'U'FDL2U'L2U2F2U'F2UFLF2B2R'F'RF2B2L'ULDU'F'UFD'UL'U2BRDU'B'U2BD'UR'U2B'L'F2B2RBR'F2B2LB'DRL'B'R'LD'RL'BRLFB'D2F'B
-Solve (with pre-solve moves): L'B' R2U'L' F UFUF' D' URL'B2R'LU R'LF'RF'BU'FUFB'L' R2FB'D2F'B (the solve is pretty insane though!)
+Solve (with pre-solve moves): L'B' R2U'L'FUFUF'D'URL'B2R'LUR'LF'RF'BU'FUFB'L'R2FB'D2F'B (the solve is pretty insane though!)
 ```
 You can see that the first two moves ' L'B' ' are ***VERY*** interesting and divide the lenght of the solve by two!
 
 #### That's it for our algorithm!
+
+## Comment notre algorithme fonctionne ?
+
+Notre première idée était de réoudre le cube comme il est résolu en blind (résolution à l'aveugle) car on n'aurait pas besoin de coder les mouvements pour changer la représentation du cube dans le code. On a seulement besoin d'une représentation du cube mélangé et on aurait pu résoudre le cube. On a codé cette idée avec la méthode Pochmann (méthode basique de blind) mais c'était très lent ( ~300 mouvements pour une résolution), donc on a commencé à se renseigner sur des méthodes de blind plus rapides. On a trouvé la méthode [Beyer-Hardiwk](https://www.speedsolving.com/wiki/index.php/Beyer-Hardwick_Method) pour résoudre les arêtes. Elle est très rapide, on a donc décidé de l'utiliser. Ensuite, Lucas a eu l'idée brillante que l'on a un avantage sur les speedcubers en blind : on peut modifier la représentation du cube dans notre "tête" (c'est-à-dire le programme pour nous). On avait donc besoin de la méthode la plus rapide pour résoudre les coins, il a de nouveau eu une idée brillante : résoudre les coins d'un 3x3x3 revient à résoudre un 2x2x2 ! On a donc décidé d'utiliser la méthode [Orthega](https://www.speedsolving.com/wiki/index.php/Ortega_Method) pour résoudre les coins. Ceci est l'idée principale de notre algorithme, voici des explications plus détaillées :
+
+### Première étape : résoudre les coins
+
+Comme nous avons expliqué, nous résolvons les coins en utilisant la méthode Orthega. Le principe est d'amener tous les coins blancs blancs sur la face blanche, tous les coins jaunes sur la face jaune et ensuite il n'y a que 5 cas pour résoudre les coins.
+
+- On a choisi de placer les coins blancs en premier.
+- On vérifie s'il y a des coins déjà bien placés.
+- Ensuite, tant que tous les coins blancs ne sont pas bien placés :
+  - On vérifie d'abord si le coin Jaune-Vert-Orange a du blanc.
+  - Si oui, on regarde où il y a de la place pour placer le coin sur la face blanche.
+    - On réalise les mouvements correspondants pour placer le coin sur la face blanche avec son sticker blanc sur la face blanche.
+  - Sinon, on regarde un autre coin jusqu'à trouver un coin possédant du blanc et on répète les étapes précédentes.
+- Quand tous les coins blancs ont leur sticker blanc sur la face blanche, tous les coins jaunes sont sur la face jaune.
+- On doit maintenant orienter les coins (mettre les stickers jaunes des coins sur la face jaune).
+- La méthode Orthega nous donne les méthodes à utiliser (c'est comme des [OLL](https://www.speedsolving.com/wiki/index.php/OLLu) mais sans se soucier des arêtes donc les algorithmes sont plus courts). On détecte donc le cas en regardant où sont placés les stickers jaunes et on réalise l'algorithme correspondant.
+- On regarde ensuite les couleurs des coins pour savoir dans lequel des 5 coins de la méthode Orthega nous sommes.
+- On applique l'algorithme correspondant.
+
+Les coins sont maintenant résolus !
