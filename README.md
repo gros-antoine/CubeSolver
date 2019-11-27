@@ -220,4 +220,4 @@ Solve (with pre-solve moves): L'B' R2U'L' F UFUF' D' URL'B2R'LU R'LF'RF'BU'FUFB'
 ```
 You can see that the first two moves ' L'B' ' are ***VERY*** interesting and divide the lenght of the solve by two.
 
-#### That's it for out algorithm!
+#### That's it for our algorithm!
