@@ -188,7 +188,6 @@ As we eplained previously, we use the Beyer-Hardwick method to solve edges. The 
 
 The previous method gave us way faster solves (80-100 moves) but we wanted to be faster. Our algorithm is not perfect and due to how it's coded (always checking for corners in the same order...), a slight change at the start of the solve can make a big difference afterward. So we thought about doing every combination of 2 moves on the cube before solving it and only keep the shortest algorithm we found (taking in count pre-solve moves of course). This means solvinh 262 cubes, as it was pretty fast to solve one cube, doing this was not a problem.
 So we do those moves before doing the algorithm above:
-L'B' R2U'L' F UFUF'   D' URL'B2R'LU R'LF'RF'BU'FUFB'L' R2FB'D2F'B 
 ```
 R then L, L', L2, F, F', F2, D, D', D2, U, U', U2, B, B', B2
 R'" : ["L", "L'", "L2", "F", "F'", "F2", "D", "D'", "D2", "U", "U'", "U2", "B", "B'", "B2", " "],
@@ -215,5 +214,5 @@ For example, we let our program run for hours searching for the fastest solution
 ```
 Scramble (blue face front, yellow face up): B R' D' R U2 L2 B2 D B2 L2 D2 F R F2 D' B2 L2 B D F2 L2 B2 R' B' D2
 Solve (without pre-solve moves):
-Solve (with pre-solve moves): L'B' R2U'L' F UFUF'   D' URL'B2R'LU R'LF'RF'BU'FUFB'L' R2FB'D2F'B (the solve is pretty insane thought!)
+Solve (with pre-solve moves): L'B' R2U'L' F UFUF'   D' URL'B2R'LU R'LF'RF'BU'FUFB'L' R2FB'D2F'B (the solve is pretty insane though!)
 ```
