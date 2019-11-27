@@ -188,26 +188,28 @@ As we eplained previously, we use the Beyer-Hardwick method to solve edges. The 
 
 The previous method gave us way faster solves (80-100 moves) but we wanted to be faster. Our algorithm is not perfect and due to how it's coded (always checking for corners in the same order...), a slight change at the start of the solve can make a big difference afterward. So we thought about doing every combination of 2 moves on the cube before solving it and only keep the shortest algorithm we found (taking in count pre-solve moves of course). This means solvinh 262 cubes, as it was pretty fast to solve one cube, doing this was not a problem.
 So we do those moves before doing the algorithm above:
+
 ```
 R concatened with L, L', L2, F, F', F2, D, D', D2, U, U', U2, B, B', B2
-R' concatened with L", "L'", "L2", "F", "F'", "F2", "D", "D'", "D2", "U", "U'", "U2", "B", "B'", "B2", " "],
-R2 concatened with : ["L", "L'", "L2", "F", "F'", "F2", "D", "D'", "D2", "U", "U'", "U2", "B", "B'", "B2", " "],
-L concatened with ["F", "F'", "F2", "D", "D'", "D2", "U", "U'", "U2", "B", "B'", "B2", " "],
-L concatened with ["F", "F'", "F2", "D", "D'", "D2", "U", "U'", "U2", "B", "B'", "B2", " "],
-L2 concatened with ["F", "F'", "F2", "D", "D'", "D2", "U", "U'", "U2", "B", "B'", "B2", " "],
-F concatened with ["R", "R'", "R2", "L", "L'", "L2", "D", "D'", "D2", "U", "U'", "U2", "B", "B'", "B2", " "],
-F' concataned with ["R", "R'", "R2", "L", "L'", "L2", "D", "D'", "D2", "U", "U'", "U2", "B", "B'", "B2", " "],
-F2 concatened with ["R", "R'", "R2", "L", "L'", "L2", "D", "D'", "D2", "U", "U'", "U2", "B", "B'", "B2", " "],
-B concatened with ["R", "R'", "R2", "L", "L'", "L2", "D", "D'", "D2", "U", "U'", "U2", " "],
-B' concatened with : ["R", "R'", "R2", "L", "L'", "L2", "D", "D'", "D2", "U", "U'", "U2", " "],
-B2 concatened with : ["R", "R'", "R2", "L", "L'", "L2", "D", "D'", "D2", "U", "U'", "U2", " "],
-U concatened with: ["R", "R'", "R2", "L", "L'", "L2", "F", "F'", "F2", "D", "D'", "D2", "B", "B'", "B2", " "],
-U' concatened with ["R", "R'", "R2", "L", "L'", "L2", "F", "F'", "F2", "D", "D'", "D2", "B", "B'", "B2", " "],
-U2 concatened with : ["R", "R'", "R2", "L", "L'", "L2", "F", "F'", "F2", "D", "D'", "D2", "B", "B'", "B2", " "],
-D concatened with : ["R", "R'", "R2", "L", "L'", "L2", "F", "F'", "F2", "B", "B'", "B2", " "],
-D' concatened with ["R", "R'", "R2", "L", "L'", "L2", "F", "F'", "F2", "B", "B'", "B2", " "],
-D2 concatened with: ["R", "R'", "R2", "L", "L'", "L2", "F", "F'", "F2", "B", "B'", "B2", " "
+R' concatened with L, L', L2, F, F', F2, D, D', D2, U, U', U2, B, B', B2
+R2 concatened with L, L', L2, F, F', F2, D, D', D2, U, U', U2, B, B', B2
+L concatened with F, F', F2, D, D', D2, U, U', U2, B, B', B2
+L concatened with F, F', F2, D, D', D2, U, U', U2, B, B', B2
+L2 concatened with F, F', F2, D, D', D2, U, U', U2, B, B', B2
+F concatened with R, R', R2, L, L', L2, D, D', D2, U, U', U2, B, B', B2
+F' concataned with R, R', R2, L, L', L2, D, D', D2, U, U', U2, B, B', B2
+F2 concatened with R, R', R2, L, L', L2, D, D', D2, U, U', U2, B, B', B2
+B concatened with R, R', R2, L, L', L2, D, D', D2, U, U', U2
+B' concatened with R, R', R2, L, L', L2, D, D', D2, U, U', U2
+B2 concatened with R, R', R2, L, L', L2, D, D', D2, U, U', U2
+U concatened with R, R', R2, L, L', L2, F, F', F2, D, D', D2, B, B', B2
+U' concatened with R, R', R2, L, L', L2, F, F', F2, D, D', D2, B, B', B2
+U2 concatened with R, R', R2, L, L', L2, F, F', F2, D, D', D2, B, B', B2
+D concatened with R, R', R2, L, L', L2, F, F', F2, B, B', B2
+D' concatened with R, R', R2, L, L', L2, F, F', F2, B, B', B2
+D2 concatened with R, R', R2, L, L', L2, F, F', F2, B, B', B2
 ```
+
 We keep the shortest algorithm counting a '2 move (R2, F2 ...) as 2 moves.
 
 Doing this can be very interesting and bring solves of 65 moves in average.
