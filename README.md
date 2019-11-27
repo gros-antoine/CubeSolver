@@ -210,6 +210,7 @@ R'" : ["L", "L'", "L2", "F", "F'", "F2", "D", "D'", "D2", "U", "U'", "U2", "B", 
 ```
 We keep the shortest algorithm considering that a '2 move (R2, F2 ...) as 2 moves.
 Doing this can be very interesting and bring solves of 60 moves in average.
+
 For example, we let our program run for hours searching for the fastest solution it could find, here it is:
 ```
 Scramble (blue face front, yellow face up): B R' D' R U2 L2 B2 D B2 L2 D2 F R F2 D' B2 L2 B D F2 L2 B2 R' B' D2
