@@ -217,9 +217,9 @@ Doing this can be very interesting and bring solves of 65 moves in average.
 For example, we let our program run for hours searching for the fastest solution it could find, here it is:
 ```
 Scramble (blue face front, yellow face up): B R' D' R U2 L2 B2 D B2 L2 D2 F R F2 D' B2 L2 B D F2 L2 B2 R' B' D2
-Solve (without pre-solve moves):
+Solve (without pre-solve moves): R2UF'U'FDL2U'L2U2F2U'F2UFLF2B2R'F'RF2B2L'ULDU'F'UFD'UL'U2BRDU'B'U2BD'UR'U2B'L'F2B2RBR'F2B2LB'DRL'B'R'LD'RL'BRLFB'D2F'B
 Solve (with pre-solve moves): L'B' R2U'L' F UFUF' D' URL'B2R'LU R'LF'RF'BU'FUFB'L' R2FB'D2F'B (the solve is pretty insane though!)
 ```
-You can see that the first two moves ' L'B' ' are ***VERY*** interesting and divide the lenght of the solve by two.
+You can see that the first two moves ' L'B' ' are ***VERY*** interesting and divide the lenght of the solve by two!
 
 #### That's it for our algorithm!
