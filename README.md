@@ -265,3 +265,8 @@ Comme nous avons précédemment expliqué, on utilise la méthode Beyer-Hardwick
 - Quand toutes les arêtes sont inversés :
 
 #### Le rubik's cube est résolu ! ENFIN !
+
+### Mouvements pré-résolution
+
+La méthode précédente donnait des résultats bien plus rapide (80-100 mouvements par résolution) mais on voulait être plus rapide. Notre algorithme n'est pas parfait est dû à la facon avec laquelle il est codé (roujours regarder les coins dans le même ordre ...), un léger changement au début de la résolution peut avoir une diff&rence énorme plus tard. On a donc pensé à tester une combinaison de 2 mouvements avant de résoudre le cube pour voir l'impact que ça aurait sur le reste de la résolution. On teste ainsi toutes les combinaisons de 2 mouvements possibles avant de résoudre le cube et on garde la résolution la plus courte (en prenant en compte les mouvements pré-résolution bien sûr). On résout donc 262 cubes, comme résoudre un cube est assez rapide, ce n'est pas un problème.
+On applique donc chacun de ses couples de mouvements avant de résoudre le cube et on garde la résolution la plus courte :
