@@ -241,7 +241,7 @@ Comme nous avons expliqué, nous résolvons les coins en utilisant la méthode O
   - Sinon, on regarde un autre coin jusqu'à trouver un coin possédant du blanc et on répète les étapes précédentes.
 - Quand tous les coins blancs ont leur sticker blanc sur la face blanche, tous les coins jaunes sont sur la face jaune.
 - On doit maintenant orienter les coins (mettre les stickers jaunes des coins sur la face jaune).
-- La méthode Orthega nous donne les méthodes à utiliser (c'est comme des [OLL](https://www.speedsolving.com/wiki/index.php/OLLu) mais sans se soucier des arêtes donc les algorithmes sont plus courts). On détecte donc le cas en regardant où sont placés les stickers jaunes et on réalise l'algorithme correspondant.
+- La méthode Orthega nous donne les méthodes à utiliser (c'est comme des [OLL](https://www.speedsolving.com/wiki/index.php/OLL) mais sans se soucier des arêtes donc les algorithmes sont plus courts). On détecte donc le cas en regardant où sont placés les stickers jaunes et on réalise l'algorithme correspondant.
 - On regarde ensuite les couleurs des coins pour savoir dans lequel des 5 coins de la méthode Orthega nous sommes.
 - On applique l'algorithme correspondant.
 
