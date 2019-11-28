@@ -246,3 +246,22 @@ Comme nous avons expliqué, nous résolvons les coins en utilisant la méthode O
 - On applique l'algorithme correspondant.
 
 Les coins sont maintenant résolus !
+
+### Seconde étape : résoudre les arêtes
+
+Comme nous avons précédemment expliqué, on utilise la méthode Beyer-Hardwick pour résoudre les arêtes. Le principe est d'utiliser une arête en tant que buffer, regarder où cette arête doit aller ensuite regarder quelle arête est à cet emplacement et on regarde où elle doit aller. Chaque combinaison de 2 arêtes (car même si on regarde 3 arêtes, on ne place que celle à la place du buffer, la première, et celle présente à la place de la précédente) est référencée donc on a juste à appliquer les mouvements correspondants et la première arête (celle à la place du buffer), et la deuxième (celle à l'emplacement de la première) seront envoyés dans leur emplacement. On continue ce procédé jusqu'à que le cube soit résolu.
+
+- On regarde premièrement s'il y a déjà des arêtes bien placées.
+- On regarde s'il y a des arêtes inverséess (arêtes à leur emplacement mais retournées sur elles-mêmes), on les résoudra plus tard.
+- On regarde l'arête présente dans l'emplacement du buffer (emplacement de l'arête BLEUE-ROUGE).
+  - Si l'arête est le buffer (arête BLEUE-ROUGE), on trouve deux emplacements libres (emplacements où ce n'est pas la bonne arête présente à cet endroit) et on applique l'algorithme correspondant pour ramener une nouvelle arête à la place du buffer.
+  - Si l'arête n'est pas le buffer, c'est un cas normal and on regarde où cette arête doit aller, où l'arête présente à cette endroit doit aller et on applique l'algorithme correspondant.
+- On répète ces étapes tant que les arêtes ne sont pas toutes bien placées.
+- On va maintenant traité le problème des arrêtes inversées, s'il y en avait une au début de la résolution, le buffer (arête BLEUE-ROUGE) est forcément inversée à la fin. S'il y en avait plus d'une au début, cela dépend des cas.
+- Le but est d'amener les arêtes inversées sur la face jaune and d'utiliser des algortihmes les inversant ensemble.
+- Si une arête est déjà sur la face jaune, on n'y touche pas.
+- Si une arête est sur le reste du cube, on vérifie quelle emplacement est libre sur la face jaune, et on réalise quelques mouvements pour l'emmener cette face.
+- Selon le nombre d'arêtes inversées et où elles sont placées, on utilise différents algorithmes (algorithme inversant deux arêtes face à face, algorithme inversant deux arêtes côte à côte ...)
+- Quand toutes les arêtes sont inversés :
+
+#### Le rubik's cube est résolu ! ENFIN !
