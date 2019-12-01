@@ -270,3 +270,41 @@ Comme nous avons précédemment expliqué, on utilise la méthode Beyer-Hardwick
 
 La méthode précédente donnait des résultats bien plus rapide (80-100 mouvements par résolution) mais on voulait être plus rapide. Notre algorithme n'est pas parfait est dû à la facon avec laquelle il est codé (roujours regarder les coins dans le même ordre ...), un léger changement au début de la résolution peut avoir une diff&rence énorme plus tard. On a donc pensé à tester une combinaison de 2 mouvements avant de résoudre le cube pour voir l'impact que ça aurait sur le reste de la résolution. On teste ainsi toutes les combinaisons de 2 mouvements possibles avant de résoudre le cube et on garde la résolution la plus courte (en prenant en compte les mouvements pré-résolution bien sûr). On résout donc 262 cubes, comme résoudre un cube est assez rapide, ce n'est pas un problème.
 On applique donc chacun de ses couples de mouvements avant de résoudre le cube et on garde la résolution la plus courte :
+
+```
+R concatened with L, L', L2, F, F', F2, D, D', D2, U, U', U2, B, B', B2
+R' concatened with L, L', L2, F, F', F2, D, D', D2, U, U', U2, B, B', B2
+R2 concatened with L, L', L2, F, F', F2, D, D', D2, U, U', U2, B, B', B2
+L concatened with F, F', F2, D, D', D2, U, U', U2, B, B', B2
+L concatened with F, F', F2, D, D', D2, U, U', U2, B, B', B2
+L2 concatened with F, F', F2, D, D', D2, U, U', U2, B, B', B2
+F concatened with R, R', R2, L, L', L2, D, D', D2, U, U', U2, B, B', B2
+F' concataned with R, R', R2, L, L', L2, D, D', D2, U, U', U2, B, B', B2
+F2 concatened with R, R', R2, L, L', L2, D, D', D2, U, U', U2, B, B', B2
+B concatened with R, R', R2, L, L', L2, D, D', D2, U, U', U2
+B' concatened with R, R', R2, L, L', L2, D, D', D2, U, U', U2
+B2 concatened with R, R', R2, L, L', L2, D, D', D2, U, U', U2
+U concatened with R, R', R2, L, L', L2, F, F', F2, D, D', D2, B, B', B2
+U' concatened with R, R', R2, L, L', L2, F, F', F2, D, D', D2, B, B', B2
+U2 concatened with R, R', R2, L, L', L2, F, F', F2, D, D', D2, B, B', B2
+D concatened with R, R', R2, L, L', L2, F, F', F2, B, B', B2
+D' concatened with R, R', R2, L, L', L2, F, F', F2, B, B', B2
+D2 concatened with R, R', R2, L, L', L2, F, F', F2, B, B', B2
+```
+
+Chaque solution de mouvement est aussi optimisée. Comme le principe est d'ajouter plein de petites résolutions de cas ensemble, il se peut que des mouvements s'annule (un R suivi d'un R' etc), on supprime alors tous ces mouvements inutiles de la solution.
+
+Pour ce qui est de compter les mouvements afin de savoir quelle résolution est la plus courte, on compte tous les mouvements "2" comment deux mouvements. Notre robot peut faire tourner des faces opposées (faces R et L, faces U et D ou faces B et F) en même temps, ceci est très intéressant car les mouvements M, S et E (qui deviennent respectivement L'R, F'B et D'U) sont assez utilisés dans la méthode Beyer-Hardwick. On peut donc faire deux mouvements en même temps, ainsi RL comptera comme un seul mouvement, R2L ne comptera que comme deux mouvements etc.
+
+Utiliser ces mouvements pré-résolution est très intéressants et descend la moyenne à 65 mouvements par résolution envrion (comptage normal des mouvements, R2 = 1 mouvement etc).
+
+Par exemple, nous avons laissé notre programme tourné pendant des heures afin de trouver le mélange résolu le plus rapidement possible, le voici :
+```
+Mélange (face bleue devant, jaune au-dessus): B R' D' R U2 L2 B2 D B2 L2 D2 F R F2 D' B2 L2 B D F2 L2 B2 R' B' D2
+Résolution (même orientation du cube, sans les mouvements pré-résolution): R2UF'U'FDL2U'L2U2F2U'F2UFLF2B2R'F'RF2B2L'ULDU'F'UFD'UL'U2BRDU'B'U2BD'UR'U2B'L'F2B2RBR'F2B2LB'DRL'B'R'LD'RL'BRLFB'D2F'B
+Résolution (même orientation du cube, avec les mouvements pré-résolution): L'B' R2U'L'FUFUF'D'URL'B2R'LUR'LF'RF'BU'FUFB'L'R2FB'D2F'B (la résolution est assez folle d'ailleurs !)
+```
+
+Vous pouvez voir que les deux premiers mouvements "L'B'" sont ***TRES*** intéressants et divise la taille de la résolution par deux !
+
+#### C'est tout pour notre algorithme !
